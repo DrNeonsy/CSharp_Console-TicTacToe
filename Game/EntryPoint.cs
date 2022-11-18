@@ -1,6 +1,4 @@
-﻿using Game.Files;
-
-namespace Game
+﻿namespace TicTacToe
 {
     internal class EntryPoint
     {
@@ -21,6 +19,8 @@ namespace Game
 
             Dev.PreviewRenderField();
             Console.ReadKey();
+            Settings.Default.MusicActive= true;
+            Settings.Default.Save();
         }
     }
 }

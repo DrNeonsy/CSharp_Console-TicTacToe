@@ -1,4 +1,4 @@
-﻿namespace ProtoUtil
+﻿namespace Util
 {
     public class Utility
     {

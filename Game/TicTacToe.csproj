@@ -12,11 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProtoUtil\ProtoUtil.csproj" />
+    <ProjectReference Include="..\ProtoUtil\Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="ProtoUtil" />
+    <Using Include="TicTacToe.Files" />
+    <Using Include="Util" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace TicTacToe
 {
     internal class App
     {

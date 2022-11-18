@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Game.Files {
+namespace TicTacToe.Files {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Game.Files {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Game.Files.Banner", typeof(Banner).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TicTacToe.Files.Banner", typeof(Banner).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
