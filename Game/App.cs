@@ -5,7 +5,7 @@ namespace TicTacToe
     internal class App
     {
         #region Fields And Properties
-        static char[] MenuOption { get; } = { '1', '2', '3', '4', '5' };
+        static char[] MenuOptions { get; } = { '1', '2', '3', '4', '5' };
         #endregion
 
         #region Methods
@@ -59,11 +59,11 @@ namespace TicTacToe
                     Console.WriteLine(Banner.Menu);
 
                     Console.WriteLine(new string('=', 39));
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action1, "| ", MenuOption[0], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action2, "| ", MenuOption[1], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOption[2], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOption[3], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOption[4], '|');
+                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action1, "| ", MenuOptions[0], '|');
+                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action2, "| ", MenuOptions[1], '|');
+                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOptions[2], '|');
+                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOptions[3], '|');
+                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOptions[4], '|');
                     Console.WriteLine(new string('=', 39));
                 }
                 static void MenuLower()
@@ -100,7 +100,32 @@ namespace TicTacToe
             }
             static void ExecuteMenu()
             {
+                switch (OptionCheck())
+                {
+                    default:
+                        break;
+                }
 
+                static char OptionCheck()
+                {
+                    ConsoleKeyInfo key;
+                    bool success = false;
+
+                    do
+                    {
+                        key = Console.ReadKey(true);
+
+                        foreach (char option in MenuOptions)
+                        {
+                            if (option == key.KeyChar)
+                            {
+                                success = true;
+                                break;
+                            }
+                        }
+                    } while (!success);
+                    return key.KeyChar;
+                }
             }
         }
         #endregion
