@@ -61,6 +61,34 @@ namespace TicTacToe.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to   __   __   ______  _     _  _     _
+        /// (__)_(__) (______)(_)   (_)(_)   (_)
+        ///(_) (_) (_)(_)__   (__)_ (_)(_)   (_)
+        ///(_) (_) (_)(____)  (_)(_)(_)(_)   (_)
+        ///(_)     (_)(_)____ (_)  (__)(_)___(_)
+        ///(_)     (_)(______)(_)   (_) (_____)
+        ///.
+        /// </summary>
+        internal static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to    _   _   _   _   _
+        ///  / \ / \ / \ / \ / \
+        /// ( S | t | a | t | s )
+        ///  \_/ \_/ \_/ \_/ \_/
+        ///.
+        /// </summary>
+        internal static string Stats {
+            get {
+                return ResourceManager.GetString("Stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 888888888888    db         ,ad8888ba,
         ///     88        d88b       d8&quot;&apos;    `&quot;8b
         ///     88       d8&apos;`8b     d8&apos;

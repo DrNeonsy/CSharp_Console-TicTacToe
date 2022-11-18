@@ -34,5 +34,41 @@ namespace TicTacToe.Files {
                 this["MusicActive"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint GamesPlayed {
+            get {
+                return ((uint)(this["GamesPlayed"]));
+            }
+            set {
+                this["GamesPlayed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("X")]
+        public char Player1Char {
+            get {
+                return ((char)(this["Player1Char"]));
+            }
+            set {
+                this["Player1Char"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("O")]
+        public char Player2Char {
+            get {
+                return ((char)(this["Player2Char"]));
+            }
+            set {
+                this["Player2Char"] = value;
+            }
+        }
     }
 }
