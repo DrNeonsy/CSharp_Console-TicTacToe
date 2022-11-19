@@ -70,6 +70,22 @@ namespace TicTacToe.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///d88888b d8888b. d8888b.  .d88b.  d8888b.
+        ///88&apos;     88  `8D 88  `8D .8P  Y8. 88  `8D
+        ///88ooooo 88oobY&apos; 88oobY&apos; 88    88 88oobY&apos;
+        ///88~~~~~ 88`8b   88`8b   88    88 88`8b
+        ///88.     88 `88. 88 `88. `8b  d8&apos; 88 `88.
+        ///Y88888P 88   YD 88   YD  `Y88P&apos;  88   YD
+        ///.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to   __   __   ______  _     _  _     _
         /// (__)_(__) (______)(_)   (_)(_)   (_)
         ///(_) (_) (_)(_)__   (__)_ (_)(_)   (_)

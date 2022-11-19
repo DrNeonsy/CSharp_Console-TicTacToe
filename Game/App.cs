@@ -11,7 +11,7 @@ namespace TicTacToe
         };
         #endregion
 
-        #region Fields And Properties
+        #region ValidMenuOptions
         static char[] MenuOptions { get; } = { '1', '2', '3', '4', '5' };
         #endregion
 
@@ -110,6 +110,12 @@ namespace TicTacToe
             {
                 switch (OptionCheck())
                 {
+                    case '1':
+                        Game.Play(mode: 1); // SinglePlayer
+                        break;
+                    case '2':
+                        Game.Play(mode: 2); // MultiPlayer
+                        break;
                     case '3':
                         PlayerSymbols();
                         break;
@@ -179,7 +185,7 @@ namespace TicTacToe
         #region Change Player Symbols
         static void PlayerSymbols()
         {
-            if (Utility.Decision("Change Symbol Of Player (O)ne Or (T)wo?", ConsoleKey.O, ConsoleKey.T, Banner.Symbol))
+            if (Utility.Decision("Change Symbol Of Player One Or Two?", ConsoleKey.O, ConsoleKey.T, Banner.Symbol))
             {
                 ChangePlayerSymbols('1');
             }
@@ -190,7 +196,48 @@ namespace TicTacToe
 
             static void ChangePlayerSymbols(char player) // Player '1' Or '2'
             {
+                Console.WriteLine(Banner.Symbol);
 
+                Console.Write($"Press Player {player}'s Symbol");
+                char symbol = Char.ToUpper(Console.ReadKey().KeyChar);
+
+                #region Check Symbol Duplicate
+                if (player == '1')
+                {
+                    if (symbol == Settings.Default.Player2Char)
+                    {
+                        Error();
+                    }
+                    else
+                    {
+                        Settings.Default.Player1Char = symbol;
+                        Settings.Default.Save();
+                    }
+                }
+                else if (player == '2')
+                {
+                    if (symbol == Settings.Default.Player1Char)
+                    {
+                        Error();
+                    }
+                    else
+                    {
+                        Settings.Default.Player2Char = symbol;
+                        Settings.Default.Save();
+                    }
+                }
+                #endregion
+
+                static void Error()
+                {
+                    Console.Clear();
+
+                    Console.WriteLine(Banner.Error);
+
+                    Console.WriteLine("You Cannot Use The Same Symbol For Both Players");
+
+                    Thread.Sleep(2700);
+                }
             }
         }
         #endregion

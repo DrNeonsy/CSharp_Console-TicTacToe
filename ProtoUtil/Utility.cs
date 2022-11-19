@@ -13,30 +13,23 @@
         public static bool Decision(string msg, ConsoleKey option1 = ConsoleKey.Y, ConsoleKey option2 = ConsoleKey.N, string? banner = null)
         {
             ConsoleKeyInfo ckey;
-            Console.WriteLine(Banner(banner));
+            Console.Write(Banner(banner) + msg + $" ( {option1} | {option2} )");
 
             do
             {
-                Console.Write(msg + $" ( {option1} | {option2} )");
                 ckey = Console.ReadKey(true);
-
-                if (ckey.Key != option1 && ckey.Key != option2)
-                {
-                    Console.Clear();
-                    Console.Write(Banner(banner));
-                    Console.WriteLine($"Only Use {option1} Or {option2} Key" +
-                        Environment.NewLine);
-                }
-
             } while (ckey.Key != option1 && ckey.Key != option2);
+
+            Console.Clear();
+
             return ckey.Key == option1;
         }
-        
+
         static string Banner(string? banner)
         {
             if (banner != null)
             {
-               return banner + Environment.NewLine;
+                return banner + Environment.NewLine;
             }
             else
             {
