@@ -15,7 +15,7 @@
             static void Config()
             {
                 Console.CursorVisible = false;
-                Console.Title = "Tic Tac Toe";
+                Console.Title = "Tic Tac Toe - Console Game";
             }
             static void Intro()
             {
@@ -105,6 +105,9 @@
                     case '4':
                         Music.ToggleMusic();
                         break;
+                    case '5':
+                        Exit();
+                        break;
                 }
 
                 static char OptionCheck()
@@ -125,9 +128,23 @@
                             }
                         }
                     } while (!success);
+
+                    Console.Clear();
+
                     return key.KeyChar;
                 }
             }
+        }
+
+        static void Exit()
+        {
+            Console.WriteLine(Banner.Saving);
+
+            Settings.Default.Save();
+
+            Thread.Sleep(1000);
+
+            Environment.Exit(0);
         }
         #endregion
     }

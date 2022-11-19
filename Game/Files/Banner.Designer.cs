@@ -85,6 +85,22 @@ namespace TicTacToe.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///.d8888.  .d8b.  db    db d888888b d8b   db  d888b
+        ///88&apos;  YP d8&apos; `8b 88    88   `88&apos;   888o  88 88&apos; Y8b
+        ///`8bo.   88ooo88 Y8    8P    88    88V8o 88 88
+        ///  `Y8b. 88~~~88 `8b  d8&apos;    88    88 V8o88 88  ooo
+        ///db   8D 88   88  `8bd8&apos;    .88.   88  V888 88. ~8~
+        ///`8888Y&apos; YP   YP    YP    Y888888P VP   V8P  Y888P
+        ///.
+        /// </summary>
+        internal static string Saving {
+            get {
+                return ResourceManager.GetString("Saving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to    _   _   _   _   _
         ///  / \ / \ / \ / \ / \
         /// ( S | t | a | t | s )
