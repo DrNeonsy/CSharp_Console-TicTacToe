@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     internal class App
     {
@@ -19,7 +17,6 @@ namespace TicTacToe
                 Console.CursorVisible = false;
                 Console.Title = "Tic Tac Toe";
             }
-
             static void Intro()
             {
                 Console.WriteLine(Banner.Tic);
@@ -32,12 +29,15 @@ namespace TicTacToe
 
                 Console.WriteLine(Banner.Toe);
                 Thread.Sleep(1000);
-                Console.Clear();
             }
         }
 
         internal static void Menu()
         {
+            Console.Clear();
+
+            Music.MusicHandle();
+
             RenderMenu();
             ExecuteMenu();
 
@@ -102,7 +102,8 @@ namespace TicTacToe
             {
                 switch (OptionCheck())
                 {
-                    default:
+                    case '4':
+                        Music.ToggleMusic();
                         break;
                 }
 

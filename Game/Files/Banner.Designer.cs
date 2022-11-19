@@ -61,6 +61,15 @@ namespace TicTacToe.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BG_Music {
+            get {
+                return ResourceManager.GetStream("BG_Music", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to   __   __   ______  _     _  _     _
         /// (__)_(__) (______)(_)   (_)(_)   (_)
         ///(_) (_) (_)(_)__   (__)_ (_)(_)   (_)
