@@ -12,7 +12,7 @@ namespace TicTacToe
         #endregion
 
         #region ValidMenuOptions
-        static char[] MenuOptions { get; } = { '1', '2', '3', '4', '5' };
+        static char[] MenuOptions { get; } = { '1', '2', '3', '4', '5', '6' };
         #endregion
 
         #region Methods
@@ -31,11 +31,9 @@ namespace TicTacToe
             {
                 Console.WriteLine(Banner.Tic);
                 Thread.Sleep(555);
-                Console.Clear();
 
                 Console.WriteLine(Banner.Tac);
                 Thread.Sleep(555);
-                Console.Clear();
 
                 Console.WriteLine(Banner.Toe);
                 Thread.Sleep(1000);
@@ -61,7 +59,8 @@ namespace TicTacToe
                     string action2 = "MultiPlayer";
                     string action3 = "Player Symbols";
                     string action4 = "Toggle Music";
-                    string action5 = "Exit";
+                    string action5 = "Reset Stats";
+                    string action6 = "Exit";
                     #endregion
 
                     Console.WriteLine(Banner.Menu);
@@ -72,6 +71,7 @@ namespace TicTacToe
                     Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOptions[2], '|');
                     Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOptions[3], '|');
                     Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOptions[4], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action6, "| ", MenuOptions[5], '|');
                     Console.WriteLine(new string('=', 36));
                 }
                 static void MenuLower()
@@ -123,6 +123,9 @@ namespace TicTacToe
                         ToggleMusic();
                         break;
                     case '5':
+                        Reset();
+                        break;
+                    case '6':
                         Exit();
                         break;
                 }
@@ -154,10 +157,13 @@ namespace TicTacToe
         }
 
         #region Music Methods
-        static void MusicHandle()
+        static void MusicHandle(bool reset = false)
         {
-
-            if (Settings.Default.MusicActive)
+            if (reset && !Settings.Default.MusicActive)
+            {
+                music.PlayLooping();
+            }
+            else if (Settings.Default.MusicActive)
             {
                 music.PlayLooping();
             }
@@ -199,7 +205,7 @@ namespace TicTacToe
                 Console.WriteLine(Banner.Symbol);
 
                 Console.Write($"Press Player {player}'s Symbol");
-                char symbol = Char.ToUpper(Console.ReadKey().KeyChar);
+                char symbol = Char.ToUpper(Console.ReadKey(true).KeyChar);
 
                 #region Check Symbol Duplicate
                 if (player == '1')
@@ -241,6 +247,12 @@ namespace TicTacToe
             }
         }
         #endregion
+
+        static void Reset()
+        {
+            MusicHandle(reset: true);
+            Settings.Default.Reset();
+        }
 
         static void Exit()
         {
