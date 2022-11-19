@@ -150,6 +150,16 @@ db   8D 88   88  `8bd8'    .88.   88  V888 88. ~8~
 `\____) (_)  (_) (_)  (_)  `\____)
 </value>
   </data>
+  <data name="Symbol" xml:space="preserve">
+    <value>
+.d8888. db    db .88b  d88. d8888b.  .d88b.  db
+88'  YP `8b  d8' 88'YbdP`88 88  `8D .8P  Y8. 88
+`8bo.    `8bd8'  88  88  88 88oooY' 88    88 88
+  `Y8b.    88    88  88  88 88~~~b. 88    88 88
+db   8D    88    88  88  88 88   8D `8b  d8' 88booo.
+`8888Y'    YP    YP  YP  YP Y8888P'  `Y88P'  Y88888P
+</value>
+  </data>
   <data name="Tac" xml:space="preserve">
     <value>888888888888    db         ,ad8888ba,
      88        d88b       d8"'    `"8b

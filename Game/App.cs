@@ -88,7 +88,7 @@ namespace TicTacToe
 
                     if (Settings.Default.MusicActive)
                     {
-                        musicState = "On";
+                        musicState = "Act";
                     }
                     else
                     {
@@ -179,9 +179,16 @@ namespace TicTacToe
         #region Change Player Symbols
         static void PlayerSymbols()
         {
-            ChangePlayerSymbols();
+            if (Utility.Decision("Change Symbol Of Player (O)ne Or (T)wo?", ConsoleKey.O, ConsoleKey.T, Banner.Symbol))
+            {
+                ChangePlayerSymbols('1');
+            }
+            else
+            {
+                ChangePlayerSymbols('2');
+            }
 
-            static void ChangePlayerSymbols()
+            static void ChangePlayerSymbols(char player) // Player '1' Or '2'
             {
 
             }
