@@ -1,7 +1,16 @@
-﻿namespace TicTacToe
+﻿using System.Media;
+
+namespace TicTacToe
 {
     internal class App
     {
+        #region Music Object
+        static readonly SoundPlayer music = new() // Creating An Object And Setting Sound Path
+        {
+            Stream = Banner.BG_Music
+        };
+        #endregion
+
         #region Fields And Properties
         static char[] MenuOptions { get; } = { '1', '2', '3', '4', '5' };
         #endregion
@@ -11,6 +20,7 @@
         {
             Config();
             Intro();
+            MusicHandle();
 
             static void Config()
             {
@@ -36,8 +46,6 @@
         {
             Console.Clear();
 
-            Music.MusicHandle();
-
             RenderMenu();
             ExecuteMenu();
 
@@ -58,13 +66,13 @@
 
                     Console.WriteLine(Banner.Menu);
 
-                    Console.WriteLine(new string('=', 39));
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action1, "| ", MenuOptions[0], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action2, "| ", MenuOptions[1], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOptions[2], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOptions[3], '|');
-                    Console.WriteLine("{0,3}{1,-18}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOptions[4], '|');
-                    Console.WriteLine(new string('=', 39));
+                    Console.WriteLine(new string('=', 36));
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action1, "| ", MenuOptions[0], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action2, "| ", MenuOptions[1], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOptions[2], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOptions[3], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOptions[4], '|');
+                    Console.WriteLine(new string('=', 36));
                 }
                 static void MenuLower()
                 {
@@ -90,20 +98,23 @@
 
                     Console.WriteLine(Banner.Stats);
 
-                    Console.WriteLine(new string('=', 39));
-                    Console.WriteLine("{0,3}{1,-26}{2,5}{3,-4}{4}", "- ", stat1, "| ", musicState, '|');
-                    Console.WriteLine("{0,3}{1,-26}{2,5}{3,-4}{4}", "- ", stat2, "| ", Settings.Default.GamesPlayed, '|');
-                    Console.WriteLine("{0,3}{1,-26}{2,5}{3,-4}{4}", "- ", stat3, "| ", Settings.Default.Player1Char, '|');
-                    Console.WriteLine("{0,3}{1,-26}{2,5}{3,-4}{4}", "- ", stat4, "| ", Settings.Default.Player2Char, '|');
-                    Console.WriteLine(new string('=', 39));
+                    Console.WriteLine(new string('=', 36));
+                    Console.WriteLine("{0,3}{1,-23}{2,5}{3,-4}{4}", "- ", stat1, "| ", musicState, '|');
+                    Console.WriteLine("{0,3}{1,-23}{2,5}{3,2}{4,3}", "- ", stat2, "| ", Settings.Default.GamesPlayed, '|');
+                    Console.WriteLine("{0,3}{1,-23}{2,5}{3,2}{4,3}", "- ", stat3, "| ", Settings.Default.Player1Char, '|');
+                    Console.WriteLine("{0,3}{1,-23}{2,5}{3,2}{4,3}", "- ", stat4, "| ", Settings.Default.Player2Char, '|');
+                    Console.WriteLine(new string('=', 36));
                 }
             }
             static void ExecuteMenu()
             {
                 switch (OptionCheck())
                 {
+                    case '3':
+                        PlayerSymbols();
+                        break;
                     case '4':
-                        Music.ToggleMusic();
+                        ToggleMusic();
                         break;
                     case '5':
                         Exit();
@@ -135,6 +146,47 @@
                 }
             }
         }
+
+        #region Music Methods
+        static void MusicHandle()
+        {
+
+            if (Settings.Default.MusicActive)
+            {
+                music.PlayLooping();
+            }
+            else
+            {
+                music.Stop();
+            }
+        }
+
+        static void ToggleMusic()
+        {
+            if (Settings.Default.MusicActive)
+            {
+                Settings.Default.MusicActive = false;
+            }
+            else
+            {
+                Settings.Default.MusicActive = true;
+            }
+
+            MusicHandle();
+        }
+        #endregion
+
+        #region Change Player Symbols
+        static void PlayerSymbols()
+        {
+            ChangePlayerSymbols();
+
+            static void ChangePlayerSymbols()
+            {
+
+            }
+        }
+        #endregion
 
         static void Exit()
         {

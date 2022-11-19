@@ -101,10 +101,13 @@ namespace TicTacToe.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to    _   _   _   _   _
-        ///  / \ / \ / \ / \ / \
-        /// ( S | t | a | t | s )
-        ///  \_/ \_/ \_/ \_/ \_/
+        ///   Looks up a localized string similar to 
+        /// ___   _____  _____  _____  ___
+        ///(  _`\(_   _)(  _  )(_   _)(  _`\
+        ///| (_(_) | |  | (_) |  | |  | (_(_)
+        ///`\__ \  | |  |  _  |  | |  `\__ \
+        ///( )_) | | |  | | | |  | |  ( )_) |
+        ///`\____) (_)  (_) (_)  (_)  `\____)
         ///.
         /// </summary>
         internal static string Stats {
