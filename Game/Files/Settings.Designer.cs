@@ -73,7 +73,7 @@ namespace TicTacToe.Files {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
         public ushort Player1Color {
             get {
                 return ((ushort)(this["Player1Color"]));
@@ -85,7 +85,7 @@ namespace TicTacToe.Files {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public ushort Player2Color {
             get {
                 return ((ushort)(this["Player2Color"]));

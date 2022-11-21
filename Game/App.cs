@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-using System.Media;
-using System.Text.RegularExpressions;
+﻿using System.Media;
 
 namespace TicTacToe
 {
@@ -23,16 +21,14 @@ namespace TicTacToe
         {
             {0 , ConsoleColor.Green},
             {1 , ConsoleColor.DarkGreen},
-            {2 , ConsoleColor.Yellow},
-            {3 , ConsoleColor.DarkYellow},
-            {4 , ConsoleColor.Red},
-            {5 , ConsoleColor.DarkRed},
-            {6 , ConsoleColor.Cyan},
-            {7 , ConsoleColor.DarkCyan},
-            {8 , ConsoleColor.Blue},
-            {9 , ConsoleColor.DarkBlue},
-            {10 , ConsoleColor.Magenta},
-            {11 , ConsoleColor.DarkMagenta}
+            {2 , ConsoleColor.Red},
+            {3 , ConsoleColor.DarkRed},
+            {4 , ConsoleColor.Cyan},
+            {5 , ConsoleColor.DarkCyan},
+            {6 , ConsoleColor.Blue},
+            {7 , ConsoleColor.DarkBlue},
+            {8 , ConsoleColor.Magenta},
+            {9 , ConsoleColor.DarkMagenta}
         };
         #endregion
 
@@ -47,7 +43,6 @@ namespace TicTacToe
             {
                 Console.CursorVisible = false;
                 Console.Title = "Tic Tac Toe - Console Game";
-                SetPlayerColor(startup: true);
             }
             static void Intro()
             {
@@ -79,8 +74,8 @@ namespace TicTacToe
                     #region Menu Point Variables (actionX)
                     string action1 = "SinglePlayer";
                     string action2 = "MultiPlayer";
-                    string action3 = "Player Symbols";
-                    string action4 = "Player Color";
+                    string action3 = "Change Symbol";
+                    string action4 = "Change Color";
                     string action5 = "Toggle Music";
                     string action6 = "Reset Stats";
                     string action7 = "Exit";
@@ -255,7 +250,7 @@ namespace TicTacToe
         #region Change Player Symbols
         static void PlayerSymbols()
         {
-            if (Utility.Decision("Change Symbol Of Player One Or Two?", ConsoleKey.O, ConsoleKey.T, Banner.Symbol))
+            if (Utility.Decision("Change Symbol For Player One Or Two?", ConsoleKey.O, ConsoleKey.T, Banner.Symbol))
             {
                 SetPlayerSymbols('1');
             }
@@ -298,16 +293,6 @@ namespace TicTacToe
                 }
                 #endregion
 
-                static void Error()
-                {
-                    Console.Clear();
-
-                    Console.WriteLine(Banner.Error);
-
-                    Console.WriteLine("Your Symbol Is Invalid");
-
-                    Thread.Sleep(2700);
-                }
             }
         }
         #endregion
@@ -316,22 +301,92 @@ namespace TicTacToe
         static void PlayerColor()
         {
             Console.WriteLine(Banner.Color);
-            for (int i = 0; i < PlayerColors.Count; i++)
-            {
-                Console.WriteLine(PlayerColors[i]);
-            }
-            Thread.Sleep(1000);
-        }
 
-        static void SetPlayerColor(bool startup = false)
-        {
-            if (!startup)
+            if (Utility.Decision("Change Color For Player One Or Two?", ConsoleKey.O, ConsoleKey.T, Banner.Symbol))
+            {
+                SetPlayerColor('1');
+            }
+            else
+            {
+                SetPlayerColor('2');
+            }
+
+            static void SetPlayerColor(char player)
             {
                 Console.WriteLine(Banner.Color);
+
+                #region Output Colors
+                for (int i = 0; i < PlayerColors.Count; i++)
+                {
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", PlayerColors[i], "| ", i, '|');
+                }
+                Console.WriteLine(Environment.NewLine + "Press A Key Based On The Color You Want");
+                #endregion
+
+                int color = ValidationCheck();
+
+                #region Assign Color
+                if (player == '1')
+                {
+                    if (color == Settings.Default.Player2Color)
+                    {
+                        Error();
+                    }
+                    else
+                    {
+                        Settings.Default.Player1Color = Convert.ToUInt16(color);
+                        Settings.Default.Save();
+                    }
+                }
+                else if (player == '2')
+                {
+                    if (color == Settings.Default.Player1Color)
+                    {
+                        Error();
+                    }
+                    else
+                    {
+                        Settings.Default.Player2Color = Convert.ToUInt16(color);
+                        Settings.Default.Save();
+                    }
+                }
+                #endregion
+
+                static int ValidationCheck()
+                {
+                    ConsoleKeyInfo key;
+                    bool success = false;
+
+                    do
+                    {
+                        key = Console.ReadKey(true);
+
+                        for (int i = 0; i < PlayerColors.Count; i++)
+                        {
+                            if ((PlayerColors.FirstOrDefault(x => x.Value == PlayerColors[i]).Key) == Convert.ToInt32(char.GetNumericValue(key.KeyChar)))
+                            {
+                                success = true;
+                                break;
+                            }
+                        }
+                    } while (!success);
+
+                    return Convert.ToInt32(char.GetNumericValue(key.KeyChar));
+                }
             }
-            Thread.Sleep(1000);
         }
         #endregion
+
+        static void Error()
+        {
+            Console.Clear();
+
+            Console.WriteLine(Banner.Error);
+
+            Console.WriteLine("Your Choice Is Invalid");
+
+            Thread.Sleep(2700);
+        }
 
         static void Reset()
         {

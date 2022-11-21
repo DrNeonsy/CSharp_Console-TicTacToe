@@ -15,10 +15,10 @@
       <Value Profile="(Default)">O</Value>
     </Setting>
     <Setting Name="Player1Color" Type="System.UInt16" Scope="User">
-      <Value Profile="(Default)">6</Value>
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="Player2Color" Type="System.UInt16" Scope="User">
-      <Value Profile="(Default)">8</Value>
+      <Value Profile="(Default)">6</Value>
     </Setting>
   </Settings>
 </SettingsFile>
