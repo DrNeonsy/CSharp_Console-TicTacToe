@@ -160,6 +160,26 @@ Y888888P VP   V8P    YP    YP   YP Y88888P Y888888P Y8888D'
 (_)     (_)(______)(_)   (_) (_____)
 </value>
   </data>
+  <data name="P1" xml:space="preserve">
+    <value>
+d8888b. db       .d8b.  db    db d88888b d8888b.       db
+88  `8D 88      d8' `8b `8b  d8' 88'     88  `8D      o88
+88oodD' 88      88ooo88  `8bd8'  88ooooo 88oobY'       88
+88~~~   88      88~~~88    88    88~~~~~ 88`8b         88
+88      88booo. 88   88    88    88.     88 `88.       88
+88      Y88888P YP   YP    YP    Y88888P 88   YD       VP
+</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>
+d8888b. db       .d8b.  db    db d88888b d8888b.      .d888b.
+88  `8D 88      d8' `8b `8b  d8' 88'     88  `8D      VP  `8D
+88oodD' 88      88ooo88  `8bd8'  88ooooo 88oobY'         odD'
+88~~~   88      88~~~88    88    88~~~~~ 88`8b         .88'
+88      88booo. 88   88    88    88.     88 `88.      j88.
+88      Y88888P YP   YP    YP    Y88888P 88   YD      888888D
+</value>
+  </data>
   <data name="Saving" xml:space="preserve">
     <value>
 .d8888.  .d8b.  db    db d888888b d8b   db  d888b
@@ -168,6 +188,16 @@ Y888888P VP   V8P    YP    YP   YP Y88888P Y888888P Y8888D'
   `Y8b. 88~~~88 `8b  d8'    88    88 V8o88 88  ooo
 db   8D 88   88  `8bd8'    .88.   88  V888 88. ~8~
 `8888Y' YP   YP    YP    Y888888P VP   V8P  Y888P
+</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>
+.d8888. d88888b d888888b db    db d8888b.
+88'  YP 88'     `~~88~~' 88    88 88  `8D
+`8bo.   88ooooo    88    88    88 88oodD'
+  `Y8b. 88~~~~~    88    88    88 88~~~
+db   8D 88.        88    88b  d88 88
+`8888Y' Y88888P    YP    ~Y8888P' 88
 </value>
   </data>
   <data name="Stats" xml:space="preserve">

@@ -167,10 +167,10 @@ namespace TicTacToe
                 switch (OptionCheck())
                 {
                     case '1':
-                        Game.Play(mode: '1'); // SinglePlayer
+                        Game.Start(mode: '1'); // SinglePlayer
                         break;
                     case '2':
-                        Game.Play(mode: '2'); // MultiPlayer
+                        Game.Start(mode: '2'); // MultiPlayer
                         break;
                     case '3':
                         PlayerSymbols();
@@ -378,7 +378,7 @@ namespace TicTacToe
         }
         #endregion
 
-        static void Error()
+        internal static void Error(int time = 2700)
         {
             Console.Clear();
 
@@ -386,7 +386,7 @@ namespace TicTacToe
 
             Console.WriteLine("Your Choice Is Invalid");
 
-            Thread.Sleep(2700);
+            Thread.Sleep(time);
         }
 
         static void Reset()

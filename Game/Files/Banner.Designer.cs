@@ -134,6 +134,38 @@ namespace TicTacToe.Files {
         
         /// <summary>
         ///   Looks up a localized string similar to 
+        ///d8888b. db       .d8b.  db    db d88888b d8888b.       db
+        ///88  `8D 88      d8&apos; `8b `8b  d8&apos; 88&apos;     88  `8D      o88
+        ///88oodD&apos; 88      88ooo88  `8bd8&apos;  88ooooo 88oobY&apos;       88
+        ///88~~~   88      88~~~88    88    88~~~~~ 88`8b         88
+        ///88      88booo. 88   88    88    88.     88 `88.       88
+        ///88      Y88888P YP   YP    YP    Y88888P 88   YD       VP
+        ///.
+        /// </summary>
+        internal static string P1 {
+            get {
+                return ResourceManager.GetString("P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///d8888b. db       .d8b.  db    db d88888b d8888b.      .d888b.
+        ///88  `8D 88      d8&apos; `8b `8b  d8&apos; 88&apos;     88  `8D      VP  `8D
+        ///88oodD&apos; 88      88ooo88  `8bd8&apos;  88ooooo 88oobY&apos;         odD&apos;
+        ///88~~~   88      88~~~88    88    88~~~~~ 88`8b         .88&apos;
+        ///88      88booo. 88   88    88    88.     88 `88.      j88.
+        ///88      Y88888P YP   YP    YP    Y88888P 88   YD      888888D
+        ///.
+        /// </summary>
+        internal static string P2 {
+            get {
+                return ResourceManager.GetString("P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
         ///.d8888.  .d8b.  db    db d888888b d8b   db  d888b
         ///88&apos;  YP d8&apos; `8b 88    88   `88&apos;   888o  88 88&apos; Y8b
         ///`8bo.   88ooo88 Y8    8P    88    88V8o 88 88
@@ -145,6 +177,22 @@ namespace TicTacToe.Files {
         internal static string Saving {
             get {
                 return ResourceManager.GetString("Saving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///.d8888. d88888b d888888b db    db d8888b.
+        ///88&apos;  YP 88&apos;     `~~88~~&apos; 88    88 88  `8D
+        ///`8bo.   88ooooo    88    88    88 88oodD&apos;
+        ///  `Y8b. 88~~~~~    88    88    88 88~~~
+        ///db   8D 88.        88    88b  d88 88
+        ///`8888Y&apos; Y88888P    YP    ~Y8888P&apos; 88
+        ///.
+        /// </summary>
+        internal static string Setup {
+            get {
+                return ResourceManager.GetString("Setup", resourceCulture);
             }
         }
         
