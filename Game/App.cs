@@ -167,10 +167,10 @@ namespace TicTacToe
                 switch (OptionCheck())
                 {
                     case '1':
-                        Game.Play(mode: 1); // SinglePlayer
+                        Game.Play(mode: '1'); // SinglePlayer
                         break;
                     case '2':
-                        Game.Play(mode: 2); // MultiPlayer
+                        Game.Play(mode: '2'); // MultiPlayer
                         break;
                     case '3':
                         PlayerSymbols();
@@ -363,7 +363,8 @@ namespace TicTacToe
 
                         for (int i = 0; i < PlayerColors.Count; i++)
                         {
-                            if ((PlayerColors.FirstOrDefault(x => x.Value == PlayerColors[i]).Key) == Convert.ToInt32(char.GetNumericValue(key.KeyChar)))
+                            // Retrieve The Key Which Is The Color Index And Checks Whether The Key Pressed Matches One Of Them (Instead Of Doing Char Array)
+                            if (PlayerColors.FirstOrDefault(x => x.Value == PlayerColors[i]).Key == Convert.ToInt32(char.GetNumericValue(key.KeyChar)))
                             {
                                 success = true;
                                 break;
