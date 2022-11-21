@@ -121,6 +121,16 @@
   <data name="BG_Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>BG_Music.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>
+.o88b.  .d88b.  db       .d88b.  d8888b.
+d8P  Y8 .8P  Y8. 88      .8P  Y8. 88  `8D
+8P      88    88 88      88    88 88oobY'
+8b      88    88 88      88    88 88`8b
+Y8b  d8 `8b  d8' 88booo. `8b  d8' 88 `88.
+ `Y88P'  `Y88P'  Y88888P  `Y88P'  88   YD
+</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>
 d88888b d8888b. d8888b.  .d88b.  d8888b.

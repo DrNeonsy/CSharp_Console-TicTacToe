@@ -5,7 +5,7 @@
     <Setting Name="MusicActive" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="GamesPlayed" Type="System.UInt32" Scope="User">
+    <Setting Name="GamesPlayed" Type="System.UInt64" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Player1Char" Type="System.Char" Scope="User">
@@ -13,6 +13,12 @@
     </Setting>
     <Setting Name="Player2Char" Type="System.Char" Scope="User">
       <Value Profile="(Default)">O</Value>
+    </Setting>
+    <Setting Name="Player1Color" Type="System.UInt16" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="Player2Color" Type="System.UInt16" Scope="User">
+      <Value Profile="(Default)">8</Value>
     </Setting>
   </Settings>
 </SettingsFile>

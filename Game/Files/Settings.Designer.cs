@@ -38,9 +38,9 @@ namespace TicTacToe.Files {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public uint GamesPlayed {
+        public ulong GamesPlayed {
             get {
-                return ((uint)(this["GamesPlayed"]));
+                return ((ulong)(this["GamesPlayed"]));
             }
             set {
                 this["GamesPlayed"] = value;
@@ -68,6 +68,30 @@ namespace TicTacToe.Files {
             }
             set {
                 this["Player2Char"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public ushort Player1Color {
+            get {
+                return ((ushort)(this["Player1Color"]));
+            }
+            set {
+                this["Player1Color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public ushort Player2Color {
+            get {
+                return ((ushort)(this["Player2Color"]));
+            }
+            set {
+                this["Player2Color"] = value;
             }
         }
     }
