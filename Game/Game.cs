@@ -21,7 +21,7 @@
             int winner = -1;
             do
             {
-                #region I/O And Check
+                #region Each Loop 1 User While Game Is Active
                 for (int i = 1; i <= 2; i++)
                 {
                     Console.Clear();
@@ -40,20 +40,33 @@
 
                     #region Input
                     int y = -1, x = -1;
-                    for (int t = 0; t < 2; t++)
+                    if (i == 1 || (i == 2 && mode == '2'))
                     {
-                        switch (t)
+                        #region Humanoids Go Here
+                        for (int t = 0; t < 2; t++)
                         {
-                            case 0:
-                                Console.Write("\n{0,36}", "Select Column");
-                                y = Input() - 1;
-                                break;
-                            case 1:
-                                ClearLine();
-                                Console.WriteLine("{0,35}", "Select Row");
-                                x = Input() - 1;
-                                break;
+                            switch (t)
+                            {
+                                case 0:
+                                    Console.Write("\n{0,36}", "Select Column");
+                                    y = Input() - 1;
+                                    break;
+                                case 1:
+                                    ClearLine();
+                                    Console.WriteLine("{0,35}", "Select Row");
+                                    x = Input() - 1;
+                                    break;
+                            }
                         }
+                        #endregion
+                    }
+                    else
+                    {
+                        #region Bots Go Here
+                        Random rnd = new();
+                        x = rnd.Next(0, 3);
+                        y = rnd.Next(0, 3);
+                        #endregion
                     }
                     #endregion
 
@@ -72,7 +85,10 @@
                     }
                     else
                     {
-                        App.Error(1800);
+                        if (i == 1 || (i == 2 && mode == '2'))
+                        {
+                            App.Error(1800);
+                        }
                         i--;
                     }
                     #endregion
