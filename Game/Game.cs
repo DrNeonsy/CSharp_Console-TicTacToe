@@ -210,7 +210,7 @@
             }
             else
             {
-                Console.WriteLine($"Player {winner}, Also Known As {{{Players[winner - 1].Name}}} Won This Match");
+                Console.WriteLine($"Player {winner} Also Known As {{{Players[winner - 1].Name}}} Won This Match");
             }
             Settings.Default.GamesPlayed++;
             Settings.Default.Save();
