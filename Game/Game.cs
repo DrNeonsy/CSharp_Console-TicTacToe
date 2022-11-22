@@ -94,13 +94,7 @@
                     #endregion
 
                     #region Check Board
-                    if (CheckTie())
-                    {
-                        gameOngoing = !CheckTie();
-                        winner = 3;
-                        break;
-                    }
-                    else if (CheckWinner())
+                    if (CheckWinner())
                     {
                         gameOngoing = !CheckWinner();
                         if (i == 1)
@@ -113,6 +107,12 @@
                             winner = 2;
                             break;
                         }
+                    }
+                    else if (CheckTie())
+                    {
+                        gameOngoing = !CheckTie();
+                        winner = 3;
+                        break;
                     }
                     #endregion
                 }
