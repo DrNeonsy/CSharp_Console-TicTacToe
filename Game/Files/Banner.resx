@@ -141,6 +141,16 @@ d88888b d8888b. d8888b.  .d88b.  d8888b.
 Y88888P 88   YD 88   YD  `Y88P'  88   YD
 </value>
   </data>
+  <data name="Guide" xml:space="preserve">
+    <value>
+ d888b  db    db d888888b d8888b. d88888b
+88' Y8b 88    88   `88'   88  `8D 88'
+88      88    88    88    88   88 88ooooo
+88  ooo 88    88    88    88   88 88~~~~~
+88. ~8~ 88b  d88   .88.   88  .8D 88.
+ Y888P  ~Y8888P' Y888888P Y8888D' Y88888P
+</value>
+  </data>
   <data name="Invalid" xml:space="preserve">
     <value>
 d888888b d8b   db db    db  .d8b.  db      d888888b d8888b.

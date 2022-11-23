@@ -12,7 +12,7 @@ namespace TicTacToe
         #endregion
 
         #region ValidMenuOptions
-        static char[] MenuOptions { get; } = { '1', '2', '3', '4', '5', '6', '7' };
+        static char[] MenuOptions { get; } = { '0', '1', '2', '3', '4', '5', '6', '7' };
         #endregion
 
         #region Color List
@@ -79,18 +79,20 @@ namespace TicTacToe
                     string action5 = "Toggle Music";
                     string action6 = "Reset Stats";
                     string action7 = "Exit";
+                    string action0 = "Guide";
                     #endregion
 
                     Console.Write(Banner.Menu);
 
                     Console.WriteLine(new string('=', 36));
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action1, "| ", MenuOptions[0], '|');
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action2, "| ", MenuOptions[1], '|');
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOptions[2], '|');
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOptions[3], '|');
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOptions[4], '|');
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action6, "| ", MenuOptions[5], '|');
-                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action7, "| ", MenuOptions[6], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action1, "| ", MenuOptions[1], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action2, "| ", MenuOptions[2], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action3, "| ", MenuOptions[3], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action4, "| ", MenuOptions[4], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action5, "| ", MenuOptions[5], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action6, "| ", MenuOptions[6], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action7, "| ", MenuOptions[7], '|');
+                    Console.WriteLine("{0,3}{1,-15}{2,15}{3,-2}{4}", "- ", action0, "| ", MenuOptions[0], '|');
                     Console.WriteLine(new string('=', 36));
                 }
                 static void MenuLower()
@@ -166,6 +168,9 @@ namespace TicTacToe
             {
                 switch (OptionCheck())
                 {
+                    case '0':
+                        Guide();
+                        break;
                     case '1':
                         Game.Start(mode: '1'); // SinglePlayer
                         break;
@@ -377,6 +382,47 @@ namespace TicTacToe
             }
         }
         #endregion
+
+        static void Guide()
+        {
+            for (int i = 0, guides = 4; i < guides; i++) // Amount Of Guide Steps
+            {
+                Console.WriteLine(Banner.Guide);
+
+                if (i != 2)
+                {
+                    Console.SetCursorPosition(0, 9);
+                }
+                else
+                {
+                    Console.SetCursorPosition(0, 8);
+                }
+
+                Dev.PreviewRenderField(i);
+
+                Console.SetCursorPosition(0, 15);
+
+                switch (i)
+                {
+                    case 0:
+                        Console.WriteLine("This Board Is An Example");
+                        break;
+                    case 1:
+                        Console.WriteLine("First You Select The Row");
+                        break;
+                    case 2:
+                        Console.WriteLine("Then You Select A Column");
+                        break;
+                    case 3:
+                        Console.WriteLine($"If You Pressed {Dev.YPos + 1} And {Dev.XPos + 1} This Would Be The Result");
+                        break;
+                }
+
+                Console.WriteLine(Environment.NewLine + $"Press Any Key To Continue To The Next Step ({i + 1} / {guides})");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
 
         internal static void Error(int time = 2700)
         {

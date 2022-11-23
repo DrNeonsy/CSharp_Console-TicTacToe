@@ -4,11 +4,13 @@
     {
         #region Fields And Properties
         static char[,] Field { get; set; } = new char[3, 3];
+        public static int XPos { get; set; } // For Guide Random Position
+        public static int YPos { get; set; } // For Guide Random Position
         #endregion
-        public static void PreviewRenderField()
+        public static void PreviewRenderField(int guide)
         {
             FillField();
-            ShowField();
+            ShowField(guide);
         }
         static void FillField()
         {
@@ -42,11 +44,33 @@
                 }
             }
         }
-        static void ShowField()
+        static void ShowField(int guide)
         {
             for (int y = 0; y < Field.GetLength(0); y++)
             {
-                Console.Write('|');
+                if (guide == 2 && y == 0)
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        if (i == 1)
+                        {
+                            Console.Write($"   {i}");
+                        }
+                        else
+                        {
+                            Console.Write($" {i}");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+                if (guide == 1)
+                {
+                    Console.Write($"{y + 1} |");
+                }
+                else
+                {
+                    Console.Write("  |");
+                }
                 for (int x = 0; x < Field.GetLength(1); x++)
                 {
                     if (Field[y, x] == 'X')
@@ -58,7 +82,27 @@
                         Console.ForegroundColor = ConsoleColor.Blue;
                     }
 
-                    Console.Write(Field[y, x]);
+                    if (guide == 3)
+                    {
+                        if (x == 0 && y == 0)
+                        {
+                            Random rnd = new();
+                            XPos = rnd.Next(0, 3);
+                            YPos = rnd.Next(0, 3);
+                        }
+                        if (y == YPos && x == XPos)
+                        {
+                            Console.Write(Field[y, x]);
+                        }
+                        else
+                        {
+                            Console.Write(' ');
+                        }
+                    }
+                    else
+                    {
+                        Console.Write(Field[y, x]);
+                    }
 
                     Console.ResetColor();
                     Console.Write('|');
