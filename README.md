@@ -13,6 +13,7 @@ So This Time Around I Actually Made A Proper [Menu](#menu)
 
 You Have The Following Options:
 
+0. [Guide](#guide)
 1. [Start: SinglePlayer](#game)
 2. Start: MultiPlayer
 3. [Change Player Symbols](#symbol)
@@ -39,6 +40,8 @@ You Have The Following Options:
 
 ### Color
 ![image](https://user-images.githubusercontent.com/118444485/203063260-1641f7a2-322b-4520-8034-55766068c811.png)
+
+### Guide
 
 ### Exit
 ![image](https://user-images.githubusercontent.com/118444485/203063377-7b16d3b4-db90-480e-bcc1-6bfab6deb887.png)
