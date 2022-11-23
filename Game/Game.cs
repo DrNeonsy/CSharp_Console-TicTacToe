@@ -5,13 +5,14 @@
         #region Fields And Properties
         static Players[] Players { get; set; } = new Players[2];
         static char[,] Field { get; set; } = new char[3, 3];
+        static char PH { get; } = '-'; // Placeholder Char
         static char[] Pos { get; set; } = { '1', '2', '3' };
         #endregion
 
         #region Methods
         internal static void Start(char mode)
         {
-            SetPlayers();
+            SetPlayers(mode);
             SetField();
             Play(mode);
         }
@@ -48,12 +49,12 @@
                             switch (t)
                             {
                                 case 0:
-                                    Console.Write("\n{0,36}", "Select Column");
+                                    Console.Write("\n{0,35}", "Select Row");
                                     y = Input() - 1;
                                     break;
                                 case 1:
                                     ClearLine();
-                                    Console.WriteLine("{0,35}", "Select Row");
+                                    Console.WriteLine("{0,36}", "Select Column");
                                     x = Input() - 1;
                                     break;
                             }
@@ -71,7 +72,7 @@
                     #endregion
 
                     #region SetSymbole
-                    if (Field[y, x] == ' ')
+                    if (Field[y, x] == PH)
                     {
                         switch (i)
                         {
@@ -122,33 +123,40 @@
 
             GetWinner(winner);
         }
-        static void SetPlayers()
+        static void SetPlayers(char mode)
         {
             for (int i = 0; i < 2; i++)
             {
-                Players[i] = new Players(i + 1, SetName(i + 1));
+                Players[i] = new Players(i + 1, SetName(i + 1, mode));
             }
-            static string SetName(int player)
+            static string SetName(int player, char mode)
             {
-                while (true)
+                if (mode == '2' || mode == '1' && player == 1) // If It Is An Actual Player
                 {
-                    Console.Clear();
-                    Console.CursorVisible = true;
-                    Console.WriteLine(Banner.Setup);
-                    Console.Write($"Enter Player {player} Name: ");
-
-                    string? input = Console.ReadLine();
-
-                    if (!string.IsNullOrEmpty(input))
+                    while (true)
                     {
-                        if (input.Length >= 3 && input.Length <= 18 && input.All(char.IsLetterOrDigit))
+                        Console.Clear();
+                        Console.CursorVisible = true;
+                        Console.WriteLine(Banner.Setup);
+                        Console.Write($"Enter Player {player} Name: ");
+
+                        string? input = Console.ReadLine();
+
+                        if (!string.IsNullOrEmpty(input))
                         {
-                            Console.CursorVisible = false;
-                            Console.Clear();
-                            return _ = char.ToUpper(input[0]) + input[1..]; // Substring(1 - X)
+                            if (input.Length >= 3 && input.Length <= 18 && input.All(char.IsLetterOrDigit))
+                            {
+                                Console.CursorVisible = false;
+                                Console.Clear();
+                                return _ = char.ToUpper(input[0]) + input[1..]; // Substring(1 - X)
+                            }
                         }
+                        InvalidInput();
                     }
-                    InvalidInput();
+                }
+                else // Player Two In Mode 1 Is The 🤖
+                {
+                    return "CPU";
                 }
 
                 static void InvalidInput()
@@ -168,7 +176,7 @@
             {
                 for (int x = 0; x < Field.GetLength(1); x++)
                 {
-                    Field[y, x] = ' ';
+                    Field[y, x] = PH;
                 }
             }
         }
@@ -222,7 +230,7 @@
             {
                 for (int x = 0; x < Field.GetLength(1); x++)
                 {
-                    if (Field[y, x] == ' ')
+                    if (Field[y, x] == PH)
                     {
                         return false; // If There Is One Space Free NO TIE
                     }
@@ -250,17 +258,17 @@
         static bool HorizontalCheck()
         {
             if ((Field[0, 0] == Field[0, 1] && Field[0, 1] == Field[0, 2])
-                && (Field[0, 0] != ' ' && Field[0, 1] != ' ' && Field[0, 2] != ' '))
+                && (Field[0, 0] != PH && Field[0, 1] != PH && Field[0, 2] != PH))
             {
                 return true;
             }
             else if ((Field[1, 0] == Field[1, 1] && Field[1, 1] == Field[1, 2])
-                && (Field[1, 0] != ' ' && Field[1, 1] != ' ' && Field[1, 2] != ' '))
+                && (Field[1, 0] != PH && Field[1, 1] != PH && Field[1, 2] != PH))
             {
                 return true;
             }
             else if ((Field[2, 0] == Field[2, 1] && Field[2, 1] == Field[2, 2])
-                && (Field[2, 0] != ' ' && Field[2, 1] != ' ' && Field[2, 2] != ' '))
+                && (Field[2, 0] != PH && Field[2, 1] != PH && Field[2, 2] != PH))
             {
                 return true;
             }
@@ -272,17 +280,17 @@
         static bool VerticalCheck()
         {
             if ((Field[0, 0] == Field[1, 0] && Field[1, 0] == Field[2, 0])
-                && (Field[0, 0] != ' ' && Field[1, 0] != ' ' && Field[2, 0] != ' '))
+                && (Field[0, 0] != PH && Field[1, 0] != PH && Field[2, 0] != PH))
             {
                 return true;
             }
             else if ((Field[0, 1] == Field[1, 1] && Field[1, 1] == Field[2, 1])
-                && (Field[0, 1] != ' ' && Field[1, 1] != ' ' && Field[2, 1] != ' '))
+                && (Field[0, 1] != PH && Field[1, 1] != PH && Field[2, 1] != PH))
             {
                 return true;
             }
             else if ((Field[0, 2] == Field[1, 2] && Field[1, 2] == Field[2, 2])
-                && (Field[0, 2] != ' ' && Field[1, 2] != ' ' && Field[2, 2] != ' '))
+                && (Field[0, 2] != PH && Field[1, 2] != PH && Field[2, 2] != PH))
             {
                 return true;
             }
@@ -294,12 +302,12 @@
         static bool DiagonalCheck()
         {
             if ((Field[0, 0] == Field[1, 1] && Field[1, 1] == Field[2, 2])
-                && (Field[0, 0] != ' ' && Field[1, 1] != ' ' && Field[2, 2] != ' '))
+                && (Field[0, 0] != PH && Field[1, 1] != PH && Field[2, 2] != PH))
             {
                 return true;
             }
             else if ((Field[0, 2] == Field[1, 1] && Field[1, 1] == Field[2, 0])
-                && (Field[0, 2] != ' ' && Field[1, 1] != ' ' && Field[2, 0] != ' '))
+                && (Field[0, 2] != PH && Field[1, 1] != PH && Field[2, 0] != PH))
             {
                 return true;
             }

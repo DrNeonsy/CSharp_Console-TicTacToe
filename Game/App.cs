@@ -222,11 +222,11 @@ namespace TicTacToe
             {
                 music.PlayLooping();
             }
-            else if (Settings.Default.MusicActive)
+            else if (!reset && Settings.Default.MusicActive)
             {
                 music.PlayLooping();
             }
-            else
+            else if (!reset && !Settings.Default.MusicActive)
             {
                 music.Stop();
             }
